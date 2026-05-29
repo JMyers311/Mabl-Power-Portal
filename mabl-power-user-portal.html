@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mabl Power Users Portal — Lilly TACOe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ══ HEADER ══════════════════════════════════════════════════════════ -->
+  <header class="header">
+    <a class="header-brand" href="#" onclick="showPage('home', document.querySelectorAll('.nav-btn')[0])">
+      <div class="mabl-logo">ml</div>
+      Mabl Power Users Portal
+      <span class="lilly-badge">Lilly TACOe</span>
+    </a>
+
+    <nav class="header-nav">
+      <button class="nav-btn active" onclick="showPage('home', this)">Home</button>
+      <button class="nav-btn" onclick="showPage('start', this)">Getting Started</button>
+      <button class="nav-btn" onclick="showPage('practices', this)">Best Practices</button>
+      <button class="nav-btn" onclick="showPage('integrations', this)">Integrations</button>
+      <button class="nav-btn" onclick="showPage('troubleshoot', this)">Troubleshooting</button>
+      <button class="nav-btn" onclick="showPage('advanced', this)">Advanced</button>
+    </nav>
+
+    <a class="header-cta" href="https://myaccess.lilly.com/identityiq/accessRequest/accessRequest.jsf#/accessRequestSelf/add" target="_blank">
+      Request Access
+    </a>
+  </header>
+
+  <!-- ══ LAYOUT ══════════════════════════════════════════════════════════ -->
+  <div class="layout">
+
+    <!-- ── SIDEBAR ──────────────────────────────────────────────────── -->
+    <aside class="sidebar">
+
+      <div class="sidebar-section">
+        <div class="sidebar-label">Quick Actions</div>
+        <a class="sidebar-item" href="https://collab.lilly.com/sites/AutomationEnablementTeam/SitePages/Automation-Intake-Form.aspx" target="_blank">
+          <div class="sidebar-icon" style="background:#e8f0fd;">📝</div>Submit a Tip
+        </a>
+        <a class="sidebar-item" href="https://stackenterprise.co/" target="_blank">
+          <div class="sidebar-icon" style="background:#f0ecfd;">🤖</div>Mabl AI Agent
+          <span class="sidebar-badge">AI</span>
+        </a>
+        <a class="sidebar-item" href="https://collab.lilly.com/sites/AutomationEnablementTeam" target="_blank">
+          <div class="sidebar-icon" style="background:#eafaf4;">🔍</div>Search KB
+        </a>
+      </div>
+
+      <div class="sidebar-divider"></div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-label">Setup</div>
+        <a class="sidebar-item" href="https://myaccess.lilly.com/identityiq/accessRequest/accessRequest.jsf#/accessRequestSelf/add" target="_blank">
+          <div class="sidebar-icon" style="background:#fff8e6;">🔑</div>Request Access
+        </a>
+        <a class="sidebar-item" href="https://university.mabl.com/mabl-skills-certification-foundations" target="_blank">
+          <div class="sidebar-icon" style="background:#f0fbff;">🎓</div>Foundations
+        </a>
+        <a class="sidebar-item" href="https://university.mabl.com/mabl-skills-certification-advanced" target="_blank">
+          <div class="sidebar-icon" style="background:#edf2ff;">⚡</div>Advanced Cert
+        </a>
+        <a class="sidebar-item" href="https://collab.lilly.com/sites/TechAtLilly_Enterprise_Test_Automation_CoE/SitePages/mabl(2).aspx" target="_blank">
+          <div class="sidebar-icon" style="background:#f0ecfd;">📖</div>Onboarding Guide
+        </a>
+      </div>
+
+      <div class="sidebar-divider"></div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-label">Community</div>
+        <a class="sidebar-item" href="https://stackenterprise.co/" target="_blank">
+          <div class="sidebar-icon" style="background:#fff1f0;">💬</div>Stack Overflow
+        </a>
+        <div class="sidebar-item" style="cursor:default;">
+          <div class="sidebar-icon" style="background:#eafaf4;">📅</div>Tip Tuesdays
+        </div>
+      </div>
+
+      <div class="sidebar-divider"></div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-label">Resources</div>
+        <a class="sidebar-resource" href="#" title="Best Practices DOCX">
+          <span style="font-size:12px;">📄</span> Best Practices (DOCX)
+        </a>
+        <a class="sidebar-resource" href="#" title="Best Practices Slides">
+          <span style="font-size:12px;">📊</span> Best Practices (Slides)
+        </a>
+        <a class="sidebar-resource" href="https://lilly-confluence.atlassian.net/wiki/spaces/AAL/pages/1461649494/Mabl#Integration.xRay" target="_blank">
+          <span style="font-size:12px;">🔗</span> xRay Integration Notes
+        </a>
+      </div>
+
+    </aside>
+
+    <!-- ── MAIN ──────────────────────────────────────────────────────── -->
+    <main class="main">
+
+      <!-- ════ HOME ════════════════════════════════════════════════════ -->
+      <section class="page-section visible" id="page-home">
+
+        <div class="hero">
+          <div class="hero-content">
+            <div class="hero-title">Welcome to the Mabl Power Users Portal</div>
+            <div class="hero-desc">Your centralized hub for setup, best practices, integrations, troubleshooting, and advanced Mabl features — built for Lilly teams shipping quality faster.</div>
+            <div class="hero-actions">
+              <button class="btn-white" onclick="showPageByName('start')">Get Started →</button>
+              <a class="btn-outline" href="https://stackenterprise.co/" target="_blank">Ask the AI Agent ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="status-row">
+          <div class="stat-chip">
+            <div class="stat-dot" style="background:#1a56e8;"></div>
+            <div><div class="stat-num">4</div><div class="stat-label">Test Layers</div></div>
+          </div>
+          <div class="stat-chip">
+            <div class="stat-dot" style="background:#0d7a55;"></div>
+            <div><div class="stat-num">5+</div><div class="stat-label">CI/CD Integrations</div></div>
+          </div>
+          <div class="stat-chip">
+            <div class="stat-dot" style="background:#5b3fb8;"></div>
+            <div><div class="stat-num">24/5</div><div class="stat-label">Mabl Support</div></div>
+          </div>
+          <div class="stat-chip">
+            <div class="stat-dot" style="background:#b45309;"></div>
+            <div><div class="stat-num">AI</div><div class="stat-label">Auto-Healing</div></div>
+          </div>
+        </div>
+
+        <div class="quick-links">
+          <a class="quick-card" href="https://myaccess.lilly.com/identityiq/accessRequest/accessRequest.jsf#/accessRequestSelf/add" target="_blank">
+            <div class="quick-card-icon" style="background:#e8f0fd;">🔑</div>
+            <div class="quick-card-title">Request Mabl Access</div>
+            <div class="quick-card-desc">myAccess@Lilly — search for Mabl Editor role</div>
+          </a>
+          <a class="quick-card" href="https://university.mabl.com/mabl-skills-certification-foundations" target="_blank">
+            <div class="quick-card-icon" style="background:#eafaf4;">🎓</div>
+            <div class="quick-card-title">Foundations Training</div>
+            <div class="quick-card-desc">Mabl University certification — foundations track</div>
+          </a>
+          <a class="quick-card" href="https://university.mabl.com/mabl-skills-certification-advanced" target="_blank">
+            <div class="quick-card-icon" style="background:#f0ecfd;">⚡</div>
+            <div class="quick-card-title">Advanced Certification</div>
+            <div class="quick-card-desc">Level up with Mabl's advanced skills track</div>
+          </a>
+          <a class="quick-card" href="https://collab.lilly.com/sites/AutomationEnablementTeam/SitePages/Automation-Intake-Form.aspx" target="_blank">
+            <div class="quick-card-icon" style="background:#fff8e6;">📝</div>
+            <div class="quick-card-title">Submit a Mabl Tip</div>
+            <div class="quick-card-desc">Share knowledge via Power Automate form</div>
+          </a>
+          <a class="quick-card" href="https://stackenterprise.co/" target="_blank">
+            <div class="quick-card-icon" style="background:#fff1f0;">💬</div>
+            <div class="quick-card-title">Ask the AI Agent</div>
+            <div class="quick-card-desc">Mabl Power User AI on Stack Enterprise</div>
+          </a>
+          <a class="quick-card" href="https://collab.lilly.com/sites/TechAtLilly_Enterprise_Test_Automation_CoE/SitePages/mabl(2).aspx" target="_blank">
+            <div class="quick-card-icon" style="background:#edf2ff;">📖</div>
+            <div class="quick-card-title">Onboarding Guide</div>
+            <div class="quick-card-desc">Automate quality, accelerate success</div>
+          </a>
+        </div>
+
+        <div class="section-heading">Portal Overview</div>
+        <div class="two-col">
+          <div class="two-col-card" style="cursor:pointer;" onclick="showPageByName('practices')">
+            <div class="card-header">
+              <div class="card-icon" style="background:var(--purple-bg);">✅</div>
+              <div><div class="card-title">Best Practices</div><div class="card-subtitle">Naming, flows, assertions, element selection</div></div>
+            </div>
+            <ul class="item-list">
+              <li>Reuse flows for common actions (login, navigation)</li>
+              <li>Data-driven variables via DataTables and Plan-level variables</li>
+              <li>Prefer <strong>id</strong> and <strong>data-*</strong> attributes; avoid brittle XPath</li>
+            </ul>
+          </div>
+          <div class="two-col-card" style="cursor:pointer;" onclick="showPageByName('integrations')">
+            <div class="card-header">
+              <div class="card-icon" style="background:var(--red-bg);">🔗</div>
+              <div><div class="card-title">Integrations</div><div class="card-subtitle">CI/CD pipelines and xRay traceability</div></div>
+            </div>
+            <ul class="item-list">
+              <li>Jenkins, GitHub Actions, GitLab, Bitbucket</li>
+              <li>xRay sync for step-level traceability and evidence</li>
+              <li>Pipeline: lint → deploy → run Mabl plans → publish</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="callout callout-info" style="margin-top:20px;">
+          <span class="callout-icon">ℹ️</span>
+          <span><strong>Maintainers:</strong> This portal is maintained by the Test Automation COE. To contribute tips or corrections, use the Submit a Mabl Tip form or reach out via Teams.</span>
+        </div>
+
+        <div class="section-heading" style="margin-top:24px;">Page Metadata</div>
+        <div class="card">
+          <table class="meta-table">
+            <thead><tr><th>Property</th><th>Value</th></tr></thead>
+            <tbody>
+              <tr><td>Tool</td><td>Mabl</td></tr>
+              <tr><td>Primary Domain</td><td>Web UI</td></tr>
+              <tr><td>Lifecycle</td><td>Authoring, Execution, Reporting, CI/CD</td></tr>
+              <tr><td>Maintainers</td><td>Test Automation COE</td></tr>
+              <tr><td>Last Verified</td><td><em style="color:var(--text-3);">DD/MM/YYYY — update on review</em></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+      </section>
+
+      <!-- ════ GETTING STARTED ══════════════════════════════════════════ -->
+      <section class="page-section" id="page-start">
+        <div class="section-heading">Getting Started <span class="section-pill">Onboarding</span></div>
+
+        <div class="callout callout-tip">
+          <span class="callout-icon">✅</span>
+          <span>New to Mabl at Lilly? Complete these steps in order before writing your first test.</span>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num-circle">1</div>
+          <div class="step-body">
+            <div class="step-title">Get Started</div>
+            <div class="step-sub">Learning Plan</div>
+            <ul class="item-list">
+              <li><a href="https://elilily.plateau.com/learning/" target="_blank">Add Course to Learning Plan </a> — search for <strong>Mabl Foundations Certificate</strong></li>
+               <li>🎬 <a href="https://university.mabl.com/understanding-automated-testing" target="_blank">Understanding Automated Testing</a> — introductory video</li>
+              <li>🎬 <a href="https://university.mabl.com/getting-started-with-mabl-foundations" target="_blank">Getting Started with Mabl Foundations</a> — introductory video</li>
+              <li>Complete Foundations Certificate Below</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num-circle">2</div>
+          <div class="step-body">
+            <div class="step-title">Training &amp; Certification</div>
+            <div class="step-sub">Mabl University</div>
+            <div class="training-grid">
+              <a class="training-card" href="https://university.mabl.com/mabl-skills-certification-foundations" target="_blank">
+                <div class="training-level">🏅 Foundations</div>
+                <div class="training-desc">Core Mabl concepts, trainer browser, test creation, and execution basics.</div>
+                <span class="training-link">Start course →</span>
+              </a>
+              <a class="training-card" href="https://university.mabl.com/mabl-skills-certification-advanced" target="_blank">
+                <div class="training-level">⚡ Advanced</div>
+                <div class="training-desc">Data tables, plan variables, API testing, advanced flows, and integrations.</div>
+                <span class="training-link">Start course →</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num-circle">3</div>
+          <div class="step-body">
+            <div class="step-title">Request Access</div>
+            <div class="step-sub">myAccess@Lilly</div>
+            <ul class="item-list">
+              <li><a href="https://myaccess.lilly.com/identityiq/accessRequest/accessRequest.jsf#/accessRequestSelf/add" target="_blank">myAccess@Lilly – Manage User Access</a> — search for <strong>Mabl Editor</strong></li>
+              <li>After access is granted, set up your <strong>service account</strong> and configure <strong>SSO login</strong></li>
+              <li>Select the correct <strong>workspace</strong> for your team before starting</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num-circle">4</div>
+          <div class="step-body">
+            <div class="step-title">Configure Your Environment</div>
+            <div class="step-sub">Workspace, trainer browser, naming conventions</div>
+            <ul class="item-list">
+              <li>Set <strong>Default Trainer Browser</strong> in your workspace settings</li>
+              <li>Follow <strong>naming conventions</strong> for tests, flows, plans, variables, and data tables</li>
+              <li>Reference: <a href="https://collab.lilly.com/:w:/r/sites/testautomation834/_layouts/15/Doc.aspx?sourcedoc=%7B8C0A2C98-83AE-4574-91CA-A0AC4B4885A7%7D&file=Mabl-Lilly%20Best%20Practices%20and%20Standards.docx&action=default&mobileredirect=true">Mabl-Lilly Best Practices and Standards (DOCX)</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num-circle">5</div>
+          <div class="step-body">
+            <div class="step-title">Onboarding Guide</div>
+            <div class="step-sub">Full walkthrough for Lilly teams</div>
+            <ul class="item-list">
+              <li><a href="https://collab.lilly.com/sites/TechAtLilly_Enterprise_Test_Automation_CoE/SitePages/mabl(2).aspx" target="_blank">MABL – Automate Quality, Accelerate Success</a></li>
+              <li>Covers SSO login, workspace setup, and your first test walkthrough</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════ BEST PRACTICES ════════════════════════════════════════════ -->
+      <section class="page-section" id="page-practices">
+        <div class="section-heading">Best Practices <span class="section-pill">Standards</span></div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-icon" style="background:var(--purple-bg);">🧩</div>
+            <div><div class="card-title">Test Design</div><div class="card-subtitle">Writing maintainable, reliable tests</div></div>
+          </div>
+          <ul class="item-list">
+            <li><strong>Reuse Flows</strong> — extract common actions (login, navigation) into shared flows</li>
+            <li><strong>Data-driven variables</strong> — use DataTables and Plan-level variables; never hard-code test data</li>
+            <li><strong>Meaningful assertions</strong> — avoid "element exists"; assert on expected values and states</li>
+            <li><strong>Element selection</strong> — prefer <strong>id</strong> and <strong>data-*</strong> attributes; avoid auto-generated XPath</li>
+            <li><strong>Conditional logic</strong> — handle dynamic paths (e.g., skip login when session already active)</li>
+          </ul>
+          <div style="margin-top:14px; padding-top:12px; border-top:1px solid var(--border-soft);">
+            <div style="font-size:12px;color:var(--text-3);font-weight:600;margin-bottom:8px;">References</div>
+            <div style="font-size:12.5px;color:var(--text-2);">📄 <em>Scalable Testing Practices: Recommendations for Success with Mabl (PDF)</em></div>
+            <div style="font-size:12.5px;color:var(--text-2);margin-top:4px;">📊 <em>Mabl Best Practices (Slides)</em></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-icon" style="background:var(--teal-bg);">🏷️</div>
+            <div><div class="card-title">Naming &amp; Branching Standards</div><div class="card-subtitle">Consistency across your workspace</div></div>
+          </div>
+          <div class="callout callout-info">
+            <span class="callout-icon">📌</span>
+            <span>Use the <strong>master</strong> branch for all new tests unless versioning specifically requires a branch.</span>
+          </div>
+          <ul class="item-list">
+            <li><strong>WIP prefix:</strong> name tests as <code>WIP – [App] – [Feature] – [Test]</code></li>
+            <li><strong>Labels:</strong> tag WIP tests; <strong>disable</strong> until reviewed; add to plans only when finalized</li>
+            <li><strong>Status tracking:</strong> move tests through review → publish before including in CI/CD plans</li>
+            <li><strong>Jira linking:</strong> link tests to work items to maintain full traceability</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-icon" style="background:var(--amber-bg);">⚠️</div>
+            <div><div class="card-title">Anti-patterns to Avoid</div><div class="card-subtitle">Common mistakes that cause flakiness</div></div>
+          </div>
+          <ul class="item-list">
+            <li><strong>Don't hard-code test data</strong> — use data-driven approaches for flexibility and reuse</li>
+            <li><strong>Don't UI-test what can be validated at the API layer</strong> — API tests are faster and more reliable</li>
+            <li><strong>Don't add waits first</strong> — adjust Unified Runner interaction speed before resorting to explicit waits</li>
+            <li><strong>Avoid auto-generated XPaths</strong> — retarget to stable attributes when selectors break</li>
+            <li><strong>Don't skip documentation</strong> — all test artifacts must be reviewed and approved; use only validated tools</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ════ INTEGRATIONS ════════════════════════════════════════════ -->
+      <section class="page-section" id="page-integrations">
+        <div class="section-heading">Integrations <span class="section-pill">CI/CD &amp; xRay</span></div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-icon" style="background:var(--red-bg);">🔁</div>
+            <div><div class="card-title">Standard Pipeline Stages</div><div class="card-subtitle">Typical CI/CD flow for Mabl tests</div></div>
+          </div>
+          <div class="pipeline">
+            <div class="pipeline-step">Lint / Build</div>
+            <div class="pipeline-arrow">→</div>
+            <div class="pipeline-step">Deploy to Test</div>
+            <div class="pipeline-arrow">→</div>
+            <div class="pipeline-step">Run Mabl Plans</div>
+            <div class="pipeline-arrow">→</div>
+            <div class="pipeline-step">Report / Publish</div>
+          </div>
+          <div style="font-size:12.5px;color:var(--text-2);">Integrate Mabl plans into your pipeline after deployment. Fail the pipeline on test plan failures to enforce quality gates.</div>
+        </div>
+
+        <div class="section-heading" style="margin-top:4px;">Supported Platforms</div>
+        <div class="integration-grid">
+          <div class="int-card">
+            <div class="int-top">
+              <div class="int-logo" style="background:#f5f5f5;color:#333;border:1px solid #e5e5e5;">J</div>
+              <div><div class="int-name">Jenkins</div><div class="int-sub">Pipeline Plugin</div></div>
+              <span class="tag tag-green" style="margin-left:auto;">Supported</span>
+            </div>
+            <div class="int-desc">Trigger Mabl plans from Jenkins pipelines using the Mabl CLI or REST API. Supports parallel execution and result reporting.</div>
+          </div>
+          <div class="int-card">
+            <div class="int-top">
+              <div class="int-logo" style="background:#f0f6ff;color:#1a56e8;border:1px solid #d0e4ff;">GH</div>
+              <div><div class="int-name">GitHub Actions</div><div class="int-sub">Actions Workflow</div></div>
+              <span class="tag tag-green" style="margin-left:auto;">Supported</span>
+            </div>
+            <div class="int-desc">Use the official Mabl GitHub Action in your workflow YAML. Results post back to PR checks automatically.</div>
+          </div>
+          <div class="int-card">
+            <div class="int-top">
+              <div class="int-logo" style="background:#fff4ee;color:#e24329;border:1px solid #ffd5c5;">GL</div>
+              <div><div class="int-name">GitLab CI</div><div class="int-sub">.gitlab-ci.yml</div></div>
+              <span class="tag tag-green" style="margin-left:auto;">Supported</span>
+            </div>
+            <div class="int-desc">Invoke Mabl plans as a pipeline stage. Use environment variables to securely pass API keys.</div>
+          </div>
+          <div class="int-card">
+            <div class="int-top">
+              <div class="int-logo" style="background:#f0f7ff;color:#0052cc;border:1px solid #cce0ff;">BB</div>
+              <div><div class="int-name">Bitbucket</div><div class="int-sub">Pipelines</div></div>
+              <span class="tag tag-green" style="margin-left:auto;">Supported</span>
+            </div>
+            <div class="int-desc">Integrate via Bitbucket Pipelines YAML. Supports branch-level test gating and result artifacts.</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-icon" style="background:var(--navy-bg);">📋</div>
+            <div><div class="card-title">xRay Integration</div><div class="card-subtitle">Test traceability and evidence</div></div>
+          </div>
+          <ul class="item-list">
+            <li>Sync Mabl results to <strong>xRay</strong> for step-level evidence and full traceability</li>
+            <li><strong>Important:</strong> ensure test cases are <strong>unlocked</strong> in xRay before pushing results</li>
+            <li><a href="https://lilly-confluence.atlassian.net/wiki/spaces/AAL/pages/1461649494/Mabl#Integration.xRay" target="_blank">View xRay integration notes on Confluence →</a></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ════ TROUBLESHOOTING ══════════════════════════════════════════ -->
+      <section class="page-section" id="page-troubleshoot">
+        <div class="section-heading">Troubleshooting <span class="section-pill">Support</span></div>
+
+        <div class="callout callout-warn">
+          <span class="callout-icon">⚠️</span>
+          <span><strong>Before adding waits:</strong> always adjust the Unified Runner page interaction speed first. Explicit waits should be a last resort.</span>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-icon" style="background:var(--amber-bg);">🔧</div>
+            <div><div class="card-title">Common Issues &amp; Fixes</div><div class="card-subtitle">Click to expand each topic</div></div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-btn" onclick="toggleAccordion(this)">
+              Selectors failing / elements not found
+              <span class="chevron">▼</span>
+            </button>
+            <div class="accordion-body">
+              <ul class="item-list">
+                <li>Retarget to stable attributes — prefer <strong>id</strong>, <strong>data-testid</strong>, or <strong>aria-label</strong></li>
+                <li>Avoid auto-generated XPaths — they break when the UI re-renders</li>
+                <li>Review Mabl's auto-healing events in run results to identify selector drift</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-btn" onclick="toggleAccordion(this)">
+              Flaky test navigation
+              <span class="chevron">▼</span>
+            </button>
+            <div class="accordion-body">
+              <ul class="item-list">
+                <li>Use <strong>Visit URL</strong> for direct routing instead of repetitive click-through navigation</li>
+                <li>Reduce dependencies on previous page state when possible</li>
+                <li>Check for session or cookie interference between test runs</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-btn" onclick="toggleAccordion(this)">
+              Interaction speed / timing issues
+              <span class="chevron">▼</span>
+            </button>
+            <div class="accordion-body">
+              <ul class="item-list">
+                <li>Adjust <strong>page interaction speed</strong> in Unified Runner settings before adding wait steps</li>
+                <li>For slow-loading elements, use Mabl's wait-for-element condition rather than fixed waits</li>
+                <li>Reference: <em>Adjusting page interaction speed (Guide)</em></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-btn" onclick="toggleAccordion(this)">
+              Network / VPN connectivity
+              <span class="chevron">▼</span>
+            </button>
+            <div class="accordion-body">
+              <ul class="item-list">
+                <li>Confirm endpoint policies allow test runner traffic for apps behind VPN or private networking</li>
+                <li>Coordinate with Network owners to allowlist Mabl runner IPs where feasible</li>
+                <li>For API-gateway backed apps, verify authorization headers are correctly passed</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-icon" style="background:var(--teal-bg);">🆘</div>
+            <div><div class="card-title">Getting Help</div></div>
+          </div>
+          <ul class="item-list">
+            <li><strong>Mabl Support:</strong> 24/5 coverage — share a repro, workspace ID, and run IDs when submitting</li>
+            <li><strong>Internal Q&amp;A:</strong> <a href="https://stackenterprise.co/" target="_blank">Stack Overflow Enterprise</a> — use the <code>mabl</code> tag for community visibility</li>
+            <li><strong>Product feedback:</strong> route via TAM/CSM or the SOE "mabl" tag</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ════ ADVANCED ═════════════════════════════════════════════════ -->
+      <section class="page-section" id="page-advanced">
+        <div class="section-heading">Advanced Features <span class="section-pill">Power Users</span></div>
+
+        <div class="two-col">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-icon" style="background:var(--navy-bg);">🤖</div>
+              <div><div class="card-title">Auto-Healing Locators</div></div>
+            </div>
+            <ul class="item-list">
+              <li>Mabl's ML automatically adjusts locators when UIs change</li>
+              <li>Review <strong>healing events</strong> in run results to monitor drift and validate fixes</li>
+              <li>Periodically accept or reject healed selectors to keep tests clean</li>
+            </ul>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <div class="card-icon" style="background:var(--purple-bg);">👁️</div>
+              <div><div class="card-title">Visual Testing</div></div>
+            </div>
+            <ul class="item-list">
+              <li>Visual change detection catches unintended UI regressions automatically</li>
+              <li>Screenshots captured at each step for run evidence</li>
+              <li>Configure visual diff sensitivity per test or environment</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-icon" style="background:var(--teal-bg);">📊</div>
+            <div><div class="card-title">Performance Metrics &amp; Dashboards</div></div>
+          </div>
+          <ul class="item-list">
+            <li>Track <strong>key timings</strong> per test run — identify slow pages and performance regressions</li>
+            <li>Monitor <strong>JavaScript errors</strong> and <strong>broken links</strong> caught during test execution</li>
+            <li>Use Mabl dashboards to review trends across plans, environments, and branches</li>
+          </ul>
+        </div>
+
+        <div class="section-heading">Community &amp; Knowledge Sharing</div>
+        <div class="two-col">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-icon" style="background:var(--amber-bg);">📅</div>
+              <div><div class="card-title">Tip Tuesdays</div><div class="card-subtitle">Regular community knowledge drops</div></div>
+            </div>
+            <ul class="item-list">
+              <li>Posted weekly in Teams and archived in SharePoint</li>
+              <li>Recordings available in the SharePoint channel</li>
+              <li>Contributions welcome — see recipe format below</li>
+            </ul>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <div class="card-icon" style="background:#fff1f0;">💬</div>
+              <div><div class="card-title">Stack Overflow Enterprise</div><div class="card-subtitle">Internal Q&amp;A platform</div></div>
+            </div>
+            <ul class="item-list">
+              <li><a href="https://stackenterprise.co/" target="_blank">stackenterprise.co</a> — tag questions with <code>mabl</code></li>
+              <li>Browse existing answers before posting</li>
+              <li>Up-vote helpful answers to improve discoverability</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="section-heading">Contribute a Recipe</div>
+        <div class="card">
+          <div class="callout callout-info" style="margin-bottom:18px;">
+            <span class="callout-icon">💡</span>
+            <span>A <strong>recipe</strong> follows the format: Context → Prerequisites → Steps → Validation → Pitfalls → Links.</span>
+          </div>
+          <div class="recipe-steps">
+            <div class="recipe-step">
+              <div class="recipe-num">1</div>
+              <div>
+                <div class="recipe-title">Submit via the form</div>
+                <div class="recipe-body"><a href="https://collab.lilly.com/sites/AutomationEnablementTeam/SitePages/Automation-Intake-Form.aspx" target="_blank">Submit a Mabl Tip →</a> — routes directly to portal maintainers</div>
+              </div>
+            </div>
+            <div class="recipe-step">
+              <div class="recipe-num">2</div>
+              <div>
+                <div class="recipe-title">Draft generation</div>
+                <div class="recipe-body">Your tip will be formatted using the Automation Recipe Template and reviewed before publishing</div>
+              </div>
+            </div>
+            <div class="recipe-step">
+              <div class="recipe-num">3</div>
+              <div>
+                <div class="recipe-title">Publication</div>
+                <div class="recipe-body">Approved recipes appear in the portal and are highlighted in Tip Tuesdays</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ══ FOOTER ══════════════════════════════════════════════════════════ -->
+  <footer class="footer-bar">
+    <div>
+      <span>Mabl Power Users Portal</span>
+      <span class="footer-dot">·</span>
+      <span>Maintained by Test Automation COE</span>
+      <span class="footer-dot">·</span>
+      <span>Tool: Mabl &nbsp;|&nbsp; Domain: Web UI &nbsp;|&nbsp; Lifecycle: Authoring, Execution, Reporting, CI/CD</span>
+    </div>
+    <div>
+      <a href="https://collab.lilly.com/sites/AutomationEnablementTeam" target="_blank">automate.lilly.com</a>
+    </div>
+  </footer>
+
+  <script>
+    function showPage(name, btn) {
+      document.querySelectorAll('.page-section').forEach(s => s.classList.remove('visible'));
+      document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+      const el = document.getElementById('page-' + name);
+      if (el) el.classList.add('visible');
+      if (btn) btn.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function showPageByName(name) {
+      const btn = document.querySelector(`.nav-btn[onclick="showPage('${name}', this)"]`);
+      showPage(name, btn);
+    }
+
+    function toggleAccordion(btn) {
+      const isOpen = btn.classList.contains('open');
+      btn.classList.toggle('open');
+      const body = btn.nextElementSibling;
+      body.classList.toggle('open');
+    }
+  </script>
+</body>
+</html>
