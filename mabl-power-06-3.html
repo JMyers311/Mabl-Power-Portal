@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -600,7 +600,7 @@ code{font-family:var(--mono);font-size:12px;background:var(--paper-2);border:1px
             <div><div class="card-t">Integrations</div><div class="card-s">CI/CD pipelines and xRay traceability</div></div>
           </div>
           <ul class="list">
-            <li>Jenkins, GitHub Actions, GitLab, Bitbucket</li>
+            <li>GitHub Actions and LM</li>
             <li>xRay sync for step-level traceability and evidence</li>
             <li>Pipeline: lint → deploy → run Mabl plans → publish</li>
           </ul>
@@ -628,20 +628,18 @@ code{font-family:var(--mono);font-size:12px;background:var(--paper-2);border:1px
     </section>
 
     <!-- ════════ GETTING STARTED ════════ -->
-    <section class="page" id="p-start">
+<section class="page" id="p-start">
       <div class="crumb">PORTAL / <b>GETTING STARTED</b></div>
       <div class="sec"><div class="sec-l"><h2>Getting Started</h2><span class="sec-pill">ONBOARDING</span></div></div>
       <div class="callout c-tip"><span class="ci">✅</span><span>New to Mabl at Lilly? Complete these steps in order before writing your first test.</span></div>
-
       <div class="step">
         <div class="step-n">1</div>
         <div class="step-b">
-          <div class="step-t">Request Access</div>
-          <div class="step-s">myAccess@Lilly</div>
+          <div class="step-t">Add Course to Learning </div>
+          <div class="step-s">Laerning Plan</div>
           <ul class="list">
-            <li><a href="https://myaccess.lilly.com/identityiq/accessRequest/accessRequest.jsf#/accessRequestSelf/add" target="_blank">myAccess@Lilly – Manage User Access</a> — search for <strong>Mabl Editor</strong></li>
-            <li>After access is granted, set up your <strong>service account</strong> and configure <strong>SSO login</strong></li>
-            <li>Select the correct <strong>workspace</strong> for your team before starting</li>
+            <li>Add Mabl Foundations Certification to<a href="https://elilily.plateau.com/learning/user/deeplink.do?linkId=ITEM_DETAILS&componentID=9524458&componentTypeID=COURSE&revisionDate=1743500460000#/E135B25370F18C5A19001E0095184749" target="_blank">Learning Plan</a></li>
+            <li>Complete the training certification below</li>
           </ul>
         </div>
       </div>
@@ -664,8 +662,20 @@ code{font-family:var(--mono);font-size:12px;background:var(--paper-2);border:1px
           </div>
         </div>
       </div>
-      <div class="step">
+    <div class="step">
         <div class="step-n">3</div>
+        <div class="step-b">
+          <div class="step-t">Request Access</div>
+          <div class="step-s">myAccess@Lilly</div>
+          <ul class="list">
+            <li><a href="https://myaccess.lilly.com/identityiq/accessRequest/accessRequest.jsf#/accessRequestSelf/add" target="_blank">myAccess@Lilly – Manage User Access</a> — search for <strong>Mabl Editor</strong></li>
+            <li>After access is granted, set up your <strong>service account</strong> and configure <strong>SSO login</strong></li>
+            <li>Select the correct <strong>workspace</strong> for your team before starting</li>
+          </ul>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-n">4</div>
         <div class="step-b">
           <div class="step-t">Configure Your Environment</div>
           <div class="step-s">Workspace · trainer browser · naming conventions</div>
@@ -677,7 +687,7 @@ code{font-family:var(--mono);font-size:12px;background:var(--paper-2);border:1px
         </div>
       </div>
       <div class="step">
-        <div class="step-n">4</div>
+        <div class="step-n">5</div>
         <div class="step-b">
           <div class="step-t">Onboarding Guide</div>
           <div class="step-s">Full walkthrough for Lilly teams</div>
@@ -689,6 +699,7 @@ code{font-family:var(--mono);font-size:12px;background:var(--paper-2);border:1px
       </div>
       <div class="callout c-info" style="margin-top:6px"><span class="ci">💬</span><span>Stuck on a step? <strong onclick="openChat()" style="cursor:pointer;text-decoration:underline">Ask the AI Agent</strong> — it can walk you through access requests and workspace setup.</span></div>
     </section>
+
 
     <!-- ════════ BEST PRACTICES ════════ -->
     <section class="page" id="p-practices">
@@ -707,7 +718,6 @@ code{font-family:var(--mono);font-size:12px;background:var(--paper-2);border:1px
         <div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--line-2)">
           <div style="font-family:var(--mono);font-size:10px;color:var(--t3);font-weight:700;letter-spacing:.5px;margin-bottom:9px">REFERENCES</div>
           <div style="display:flex;gap:8px;flex-wrap:wrap">
-            <span class="tag tg-blue">📄 Scalable Testing Practices (PDF)</span>
             <span class="tag tg-violet">📊 Mabl Best Practices (Slides)</span>
           </div>
         </div>
@@ -755,22 +765,15 @@ code{font-family:var(--mono);font-size:12px;background:var(--paper-2);border:1px
       <div class="sec"><div class="sec-l"><h2>Supported Platforms</h2></div></div>
       <div class="int-grid">
         <div class="int">
-          <div class="int-top"><div class="int-logo" style="background:#f5f5f5;color:#333">J</div><div><div class="int-name">Jenkins</div><div class="int-sub">Pipeline Plugin</div></div><span class="tag tg-green" style="margin-left:auto">SUPPORTED</span></div>
-          <div class="int-desc">Trigger Mabl plans from Jenkins pipelines using the Mabl CLI or REST API. Supports parallel execution and result reporting.</div>
-        </div>
-        <div class="int">
           <div class="int-top"><div class="int-logo" style="background:var(--blue-soft);color:var(--blue)">GH</div><div><div class="int-name">GitHub Actions</div><div class="int-sub">Actions Workflow</div></div><span class="tag tg-green" style="margin-left:auto">SUPPORTED</span></div>
           <div class="int-desc">Use the official Mabl GitHub Action in your workflow YAML. Results post back to PR checks automatically.</div>
         </div>
-        <div class="int">
-          <div class="int-top"><div class="int-logo" style="background:#fff4ee;color:#e24329">GL</div><div><div class="int-name">GitLab CI</div><div class="int-sub">.gitlab-ci.yml</div></div><span class="tag tg-green" style="margin-left:auto">SUPPORTED</span></div>
-          <div class="int-desc">Invoke Mabl plans as a pipeline stage. Use environment variables to securely pass API keys.</div>
-        </div>
-        <div class="int">
-          <div class="int-top"><div class="int-logo" style="background:#f0f7ff;color:#0052cc">BB</div><div><div class="int-name">Bitbucket</div><div class="int-sub">Pipelines</div></div><span class="tag tg-green" style="margin-left:auto">SUPPORTED</span></div>
-          <div class="int-desc">Integrate via Bitbucket Pipelines YAML. Supports branch-level test gating and result artifacts.</div>
+         <div class="int">
+          <div class="int-top"><div class="int-logo" style="background:var(--blue-soft);color:var(--blue)">GH</div><div><div class="int-name">LM</div><div class="int-sub">Actions Workflow</div></div><span class="tag tg-green" style="margin-left:auto">SUPPORTED</span></div>
+          <div class="int-desc">Enter text about LM here</div>
         </div>
       </div>
+
 
       <div class="card">
         <div class="card-h"><div class="card-ico" style="background:var(--blue-soft)">📋</div><div><div class="card-t">xRay Integration</div><div class="card-s">Test traceability and evidence</div></div></div>
@@ -1212,3 +1215,4 @@ async function send(text){
 </script>
 </body>
 </html>
+    
