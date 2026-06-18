@@ -548,7 +548,7 @@ code{font-family:var(--mono);font-size:12px;background:var(--paper-2);border:1px
 
     <div class="side-grp">
       <div class="side-lbl">Workstreams</div>
-      <a class="nav-i" data-nav="agent" onclick="go('agent',this)"><span class="nav-ico">🤖</span> AI Agent</a>
+      <a class="nav-i" data-nav="agent" onclick="openChat()"><span class="nav-ico">🤖</span> AI Agent</a>
     </div>
 
     <div class="side-div"></div>
@@ -1289,8 +1289,15 @@ function showTab(btn,id){
 }
 
 /* ── CHAT ── */
+/* The AI Agent is hosted on Lilly Chat-In-A-Box. Every "Ask the AI Agent"
+   entry point (nav item, buttons, quick cards, prompt chips, the floating
+   button, search focus) routes here. To revert to the in-portal chat
+   widget, set AGENT_HOSTED_URL = '' below. */
+const AGENT_HOSTED_URL = 'https://chat.lilly.com/cortex/chat/mabl-power-chat/cd3d86e2-6713-45c4-906b-a66558a9b49c';
+
 const chat=document.getElementById('chat'),overlay=document.getElementById('chatOverlay'),body=document.getElementById('chatBody'),input=document.getElementById('chatInput'),chips=document.getElementById('chatChips');
 function openChat(prefill){
+  if(AGENT_HOSTED_URL){window.open(AGENT_HOSTED_URL,'_blank','noopener');return;}
   chat.classList.add('open');overlay.classList.add('open');
   document.querySelector('.fab').style.opacity='0';
   setTimeout(()=>{if(prefill){send(prefill)}else{input.focus()}},340);
@@ -1311,25 +1318,33 @@ function typing(){
 function stopTyping(){const t=document.getElementById('typing');if(t)t.remove()}
 
 /* ════════════════════════════════════════════════════════════════════
-   RAG BACKEND CONFIG
+   CORTEX PROXY CONFIG
    ────────────────────────────────────────────────────────────────────
-   Point this at your /api/chat endpoint (the FastAPI/Express service
-   that runs: embed question → vector search → build prompt → LLM).
-   The backend must return JSON shaped as:
-     { "answer": "<html string>",
-       "sources": [ { "title": "Getting Started", "page": "start" }, ... ] }
-   where `page` is a portal slug: home|start|practices|integrations|
-   troubleshoot|advanced  (used to deep-link the citation chips).
+   The chat calls a small proxy (server.js) that holds the Anthropic API
+   key server-side and forwards to the Anthropic API with the Lilly
+   Cortex MCP server attached. The proxy must accept:
+       POST { system, messages:[{role,content}] }
+   and return the raw Anthropic response (with a `content` array).
 
-   Leave RAG_API_URL = '' to run in offline DEMO mode, which falls back
-   to the local sample knowledge base below.
-
-   STREAMING: when true, the widget calls `${RAG_API_URL}/stream` and types
-   the answer out token-by-token via Server-Sent Events. When false it calls
-   RAG_API_URL once and shows the full answer. (Demo mode ignores this.)
+   • Demo / sharing: if the proxy can't be reached, the chat automatically
+     falls back to the offline knowledge base below, so it never looks
+     broken.
+   • Local demo: run `node server.js` and leave the URL as localhost.
+   • Hosted: when you have a Lilly-hosted proxy (reachable by others and
+     behind Lilly auth), replace CORTEX_PROXY_URL with that endpoint —
+     it's the only line that needs to change.
    ════════════════════════════════════════════════════════════════════ */
-const RAG_API_URL = '';   // e.g. 'https://mabl-portal-api.lilly.com/api/chat'
-const STREAMING   = true; // type answers out live (needs the /stream endpoint)
+const CORTEX_PROXY_URL = 'http://localhost:3001/api/chat';
+const CORTEX_SYSTEM    = 'You are the Mabl AI Agent for Lilly, powered by the Lilly Cortex Connector. '+
+  'Use the available Cortex tools to answer questions about using Mabl at Lilly accurately and concisely. '+
+  'If a question is outside the scope of Mabl or the portal, say you cannot answer confidently and suggest '+
+  'escalating to Mabl Support (24/5) or Stack Overflow Enterprise with the mabl tag.';
+
+const RAG_API_URL = CORTEX_PROXY_URL;  // unified send() uses this as the live endpoint
+const STREAMING   = false;             // the Cortex proxy responds in one shot (no SSE)
+
+/* conversation history sent to the proxy (role/content pairs only) */
+let cortexHistory = [];
 
 /* render citation chips from a sources array -> deep-links via go() */
 function renderSources(sources){
@@ -1339,17 +1354,34 @@ function renderSources(sources){
     (s.title||'Source')+'</a>').join('')+'</div>';
 }
 
-/* ── REAL RAG CALL ──────────────────────────────────────────────────
-   Sends the question to the backend and returns { answer, sources }. */
+/* ── CORTEX PROXY CALL ──────────────────────────────────────────────
+   Sends the running conversation to the proxy and returns { answer,
+   sources }. The proxy returns the raw Anthropic response, so we pull
+   the text blocks out of `content[]` and convert newlines to <br>. */
 async function askBackend(question){
+  cortexHistory.push({role:'user',content:question});
   const res=await fetch(RAG_API_URL,{
     method:'POST',
     headers:{'Content-Type':'application/json'},
     credentials:'include',                 // forward Lilly SSO cookies if gated
-    body:JSON.stringify({question})
+    body:JSON.stringify({system:CORTEX_SYSTEM,messages:cortexHistory})
   });
-  if(!res.ok)throw new Error('backend '+res.status);
-  return await res.json();                  // { answer, sources }
+  if(!res.ok){cortexHistory.pop();throw new Error('proxy '+res.status);}
+  const data=await res.json();
+  if(data.error){cortexHistory.pop();throw new Error(data.error);}
+
+  // pull plain text out of the Anthropic content blocks
+  const text=(data.content||[])
+    .filter(b=>b.type==='text')
+    .map(b=>b.text)
+    .join('\n').trim() || 'No response from Cortex.';
+
+  cortexHistory.push({role:'assistant',content:text});
+
+  // escape HTML, then render newlines as <br> for the bubble
+  const safe=text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+                 .replace(/\n/g,'<br>');
+  return {answer:safe,sources:[]};         // Cortex answers aren't page-mapped
 }
 
 /* ── STREAMING RAG CALL ─────────────────────────────────────────────
@@ -1447,21 +1479,19 @@ async function send(text){
     return;
   }
 
-  // ── non-streaming (or demo) path ──
+  // ── non-streaming (Cortex proxy → offline KB fallback) path ──
   let data;
   try{
     if(RAG_API_URL){
-      data=await askBackend(q);                       // live RAG pipeline (one shot)
+      data=await askBackend(q);                       // live Cortex proxy
     }else{
       await new Promise(r=>setTimeout(r,800+Math.random()*400)); // demo latency
       data=demoAnswer(q);                             // offline fallback
     }
   }catch(err){
-    stopTyping();
-    addMsg('bot','I\'m having trouble reaching the knowledge base right now. '+
-      'Please try again in a moment, or escalate to <strong>Mabl Support</strong> (24/5).'+
-      renderSources([{title:'Getting Help',page:'troubleshoot'}]));
-    return;
+    // proxy unreachable (not running / not hosted / blocked) — fall back
+    // to the offline knowledge base so the chat still answers.
+    data=demoAnswer(q);
   }
 
   stopTyping();
